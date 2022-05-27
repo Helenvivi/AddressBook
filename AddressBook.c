@@ -648,7 +648,7 @@ int main()
     Addressbook *book = CreatAddBook();
     while (1)
     {
-        char op = -1;
+        char op = '0';
         AddBookGui();
         printf("请选择一个功能\n");
         scanf("%s", &op);
