@@ -467,11 +467,6 @@ void ChangeAddBookDate(Addressbook *book)
         printf("通讯录为空,没有数据可以修改\n");
         return;
     }
-    if (book == NULL || book->pfnode == NULL || book->plnode == NULL)
-    {
-        printf("通讯录为空,没有数据可以修改\n");
-        return;
-    }
     DateNode *pfnode = book->pfnode;
     DateNode *plnode = book->plnode;
     int numb = -1;
@@ -594,11 +589,6 @@ void OutputAll(Addressbook *book)
         printf("通讯录为空\n");
         return;
     }
-    if (book == NULL || book->pfnode == NULL || book->plnode == NULL)
-    {
-        printf("通讯录为空\n");
-        return;
-    }
     SortAddBook(book);
     DateNode *pfnode = book->pfnode;
     DateNode *plnode = book->plnode;
@@ -618,11 +608,6 @@ void OutputAll(Addressbook *book)
 void SaveAddBook(Addressbook *book)
 {
     if (!book || !book->pfnode || !book->plnode)
-    {
-        printf("通讯录为空\n");
-        return;
-    }
-    if (book == NULL || book->pfnode == NULL || book->plnode == NULL)
     {
         printf("通讯录为空\n");
         return;
@@ -658,11 +643,6 @@ void SpecifiAddBook(Addressbook *book, int value)
         printf("通讯录为空\n");
         return;
     }
-    if (book == NULL || book->pfnode == NULL || book->plnode == NULL)
-    {
-        printf("通讯录为空\n");
-        return;
-    }
     DateNode *pfnode = book->pfnode;
     DateNode *plnode = book->plnode;
     if (value < pfnode->numb || value > plnode->numb)
@@ -686,11 +666,6 @@ void SpecifiAddBook(Addressbook *book, int value)
 void ExportTypeAdd(Addressbook *book, int class)
 {
     if (!book || !book->pfnode || !book->plnode)
-    {
-        printf("通讯录为空\n");
-        return;
-    }
-    if (book == NULL || book->pfnode == NULL || book->plnode == NULL)
     {
         printf("通讯录为空\n");
         return;
