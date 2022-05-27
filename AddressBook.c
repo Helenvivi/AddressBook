@@ -159,6 +159,8 @@ Addressbook *CreatAddBook()
     }
     // initialization operation
     memset(book, 0, sizeof(Addressbook));
+    book->pfnode = NULL;
+    book->plnode = NULL;
     // apply new node
     DateNode *node = (DateNode *)malloc(sizeof(DateNode));
     if (!node)
@@ -169,6 +171,9 @@ Addressbook *CreatAddBook()
         CreatAddBook();
     }
     memset(node, 0, sizeof(DateNode));
+    node->datepointer = NULL;
+    node->plast = NULL;
+    node->pnext = NULL;
     node->datepointer = (Date *)malloc(sizeof(Date));
     if (!node->datepointer)
     {
@@ -207,6 +212,9 @@ Addressbook *AddBookInsert(Addressbook *book)
         return AddBookInsert(book);
     }
     memset(node, 0, sizeof(DateNode));
+    node->datepointer = NULL;
+    node->plast = NULL;
+    node->pnext = NULL;
     node->datepointer = (Date *)malloc(sizeof(Date));
     if (!node->datepointer)
     {
@@ -324,7 +332,7 @@ void DeleNodeAddBook(Addressbook *book)
         scanf("%s", phone);
         if (CheckBookPhone(book, phone) >= 0)
         {
-            if ( CheckBookPhone(book,phone)>=0 && pfnode == plnode)
+            if (CheckBookPhone(book, phone) >= 0 && pfnode == plnode)
             {
                 free(pfnode->datepointer);
                 free(pfnode);
@@ -391,7 +399,7 @@ void DeleNodeAddBook(Addressbook *book)
         scanf("%s", name);
         if (CheckBookPhone(book, name) >= 0)
         {
-            if ( CheckBookPhone(book,name)>=0 && pfnode == plnode)
+            if (CheckBookPhone(book, name) >= 0 && pfnode == plnode)
             {
                 free(pfnode->datepointer);
                 free(pfnode);
@@ -498,6 +506,9 @@ void ChangeAddBookDate(Addressbook *book)
                 return;
             }
             memset(node, 0, sizeof(DateNode));
+            node->datepointer = NULL;
+            node->plast = NULL;
+            node->pnext = NULL;
             node->datepointer = (Date *)malloc(sizeof(Date));
             if (!node)
             {
@@ -545,6 +556,9 @@ void ChangeAddBookDate(Addressbook *book)
                 return;
             }
             memset(node, 0, sizeof(DateNode));
+            node->datepointer = NULL;
+            node->plast = NULL;
+            node->pnext = NULL;
             node->datepointer = (Date *)malloc(sizeof(Date));
             if (!node)
             {
@@ -581,7 +595,7 @@ void ChangeAddBookDate(Addressbook *book)
 
 void OutputAll(Addressbook *book)
 {
-    //null pointer is not exist
+    // null pointer is not exist
     if (!book || !book->pfnode || !book->plnode)
     {
         printf("通讯录为空\n");

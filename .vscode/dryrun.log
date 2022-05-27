@@ -1,0 +1,6 @@
+make --dry-run --always-make --keep-going --print-directory
+make: Entering directory '/home/arch/github/AddresBook'
+gcc -c gui_void.c
+gcc -o AddressBook AddressBook.c gui_void.o
+make: Leaving directory '/home/arch/github/AddresBook'
+ 

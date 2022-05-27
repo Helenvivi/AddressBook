@@ -19,7 +19,6 @@ void AddBookGui()
     printf("---------            0,回到主界面            --------\n");
     printf("-----------------------------------------------------\n");
 }
-
 // delete gui
 void DeleteAddGui()
 {
@@ -31,7 +30,6 @@ void DeleteAddGui()
     printf("-----------------------------------------------------\n");
     printf("-----------------------------------------------------\n");
 }
-
 // type gui
 void TypeAddGui()
 {
@@ -80,7 +78,6 @@ void AddBookNoteGui(DateNode *node)
     printf("-----------------------------------------------------\n");
     printf("-----------------------------------------------------\n");
 }
-
 void AddBookNoteFprintf(FILE *fp,DateNode *node)
 {
     char *sex[] = {"未知","男性","女性"};
