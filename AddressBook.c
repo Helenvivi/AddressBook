@@ -140,8 +140,8 @@ void ClearAddBook(DateNode *pfnode)
     }
     ClearAddBook(pfnode->pnext);
     free(pfnode->datepointer);
-    free(pfnode);
     pfnode->datepointer = NULL;
+    free(pfnode);
     pfnode = NULL;
     return;
 }
@@ -267,16 +267,16 @@ void DeleNodeAddBook(Addressbook *book)
             printf("请重新输入\n");
             scanf("%d", &numb);
         }
-        // head and tail
-        if (numb == pfnode->numb && pfnode == plnode)
-        {
-            free(pfnode->datepointer);
-            free(pfnode);
-            pfnode->datepointer = NULL;
-            pfnode = NULL;
-            SortAddBook(book);
-            return;
-        }
+        // // head and tail
+        // if (numb == pfnode->numb && pfnode == plnode)
+        // {
+        //     free(pfnode->datepointer);
+        //     free(pfnode);
+        //     pfnode->datepointer = NULL;
+        //     pfnode = NULL;
+        //     SortAddBook(book);
+        //     return;
+        // }
         //head
         if (numb == pfnode->numb)
         {
@@ -325,16 +325,16 @@ void DeleNodeAddBook(Addressbook *book)
         scanf("%s", phone);
         if (CheckBookPhone(book, phone) >= 0)
         {
-            if (CheckBookPhone(book, phone) >= 0 && pfnode == plnode)
-            {
-                free(pfnode->datepointer);
-                free(pfnode);
-                free(book);
-                pfnode->datepointer = NULL;
-                pfnode = plnode = NULL;
-                book = NULL;
-                return;
-            }
+            // if (CheckBookPhone(book, phone) >= 0 && pfnode == plnode)
+            // {
+            //     free(pfnode->datepointer);
+            //     free(pfnode);
+            //     free(book);
+            //     pfnode->datepointer = NULL;
+            //     pfnode = plnode = NULL;
+            //     book = NULL;
+            //     return;
+            // }
             if (strcmp(pfnode->phone, phone) == 0)
             {
                 book->pfnode = book->pfnode->pnext;
@@ -392,16 +392,16 @@ void DeleNodeAddBook(Addressbook *book)
         scanf("%s", name);
         if (CheckBookPhone(book, name) >= 0)
         {
-            if (CheckBookPhone(book, name) >= 0 && pfnode == plnode)
-            {
-                free(pfnode->datepointer);
-                free(pfnode);
-                free(book);
-                pfnode->datepointer = NULL;
-                pfnode = plnode = NULL;
-                book = NULL;
-                return;
-            }
+            // if (CheckBookPhone(book, name) >= 0 && pfnode == plnode)
+            // {
+            //     free(pfnode->datepointer);
+            //     free(pfnode);
+            //     free(book);
+            //     pfnode->datepointer = NULL;
+            //     pfnode = plnode = NULL;
+            //     book = NULL;
+            //     return;
+            // }
             if (strcmp(pfnode->name, name) == 0)
             {
                 book->pfnode = book->pfnode->pnext;
