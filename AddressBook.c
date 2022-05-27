@@ -154,8 +154,7 @@ Addressbook *CreatAddBook()
     if (!book)
     {
         printf("开辟失败，请重新开辟\n");
-        // function recursion
-        CreatAddBook();
+        return NULL;
     }
     // initialization operation
     memset(book, 0, sizeof(Addressbook));
@@ -167,8 +166,7 @@ Addressbook *CreatAddBook()
     {
         printf("开辟失败，请重新开辟\n");
         free(book);
-        book = NULL;
-        CreatAddBook();
+        return NULL;
     }
     memset(node, 0, sizeof(DateNode));
     node->datepointer = NULL;
@@ -182,7 +180,7 @@ Addressbook *CreatAddBook()
         free(book);
         node = NULL;
         book = NULL;
-        CreatAddBook();
+        return NULL;
     }
     memset(node->datepointer, 0, sizeof(Date));
     NodeAssignment(book, node);
@@ -246,11 +244,6 @@ void DeleNodeAddBook(Addressbook *book)
         printf("没有数据可以删除\n");
         return;
     }
-    if (book == NULL || book->pfnode == NULL || book->plnode == NULL)
-    {
-        printf("没有数据可以删除\n");
-        return;
-    }
     if (book->plnode->numb - book->pfnode->numb + 1 == 15)
     {
         printf("通讯录已满\n");
@@ -274,17 +267,17 @@ void DeleNodeAddBook(Addressbook *book)
             printf("请重新输入\n");
             scanf("%d", &numb);
         }
-        // // head and tail
-        // if (numb == pfnode->numb && pfnode == plnode)
-        // {
-        //     free(pfnode->datepointer);
-        //     free(pfnode);
-        //     pfnode->datepointer = NULL;
-        //     pfnode = NULL;
-        //     SortAddBook(book);
-        //     return;
-        // }
-        // head
+        // head and tail
+        if (numb == pfnode->numb && pfnode == plnode)
+        {
+            free(pfnode->datepointer);
+            free(pfnode);
+            pfnode->datepointer = NULL;
+            pfnode = NULL;
+            SortAddBook(book);
+            return;
+        }
+        //head
         if (numb == pfnode->numb)
         {
             book->pfnode = book->pfnode->pnext;

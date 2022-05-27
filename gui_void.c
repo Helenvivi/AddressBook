@@ -1,8 +1,8 @@
 #include <stdio.h>
 #include <string.h>
 #include "gui_void.h"
-// gui
 
+// gui
 void AddBookGui()
 {
     printf("--------------------通讯录管理系统-------------------\n");
