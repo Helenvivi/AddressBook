@@ -99,11 +99,6 @@ void NodeAssignment(Addressbook *book, DateNode *node)
     printf("请输入联系人性别\n");
     printf("0:未知  1:男  2:女\n");
     scanf("%d", &node->datepointer->sex);
-    while (node->datepointer->sex < 0 || node->datepointer->sex > 2)
-    {
-        printf("请重新输入联系人性别\n");
-        scanf("%d", &node->datepointer->sex);
-    }
     printf("请输入联系人手机号\n");
     scanf("%s", node->phone);
     while (CheckBookPhone(book, node->phone) >= 0)
@@ -111,20 +106,15 @@ void NodeAssignment(Addressbook *book, DateNode *node)
         printf("请重新输入联系人手机号\n");
         scanf("%s", node->phone);
     }
+    printf("请输入联系人联系人类型\n");
+    printf("1:商务类  2:办公类  3:个人类\n");
+    scanf("%d", &node->myclass);
     printf("请输入联系人年龄\n");
     scanf("%s", node->datepointer->age);
     printf("请输入联系人邮箱\n");
     scanf("%s", node->email);
     printf("请输入联系人通讯地址\n");
     scanf("%s", node->address);
-    printf("请输入联系人联系人类型\n");
-    printf("1:商务类  2:办公类  3:个人类\n");
-    scanf("%d", &node->myclass);
-    while (node->myclass > 3 || node->myclass < 1)
-    {
-        printf("请重新输入联系人类别\n");
-        scanf("%d", &node->myclass);
-    }
     printf("请输入联系人公司\n");
     scanf("%s", node->datepointer->company);
     printf("请输入联系人邮编地址\n");
@@ -267,17 +257,7 @@ void DeleNodeAddBook(Addressbook *book)
             printf("请重新输入\n");
             scanf("%d", &numb);
         }
-        // // head and tail
-        // if (numb == pfnode->numb && pfnode == plnode)
-        // {
-        //     free(pfnode->datepointer);
-        //     free(pfnode);
-        //     pfnode->datepointer = NULL;
-        //     pfnode = NULL;
-        //     SortAddBook(book);
-        //     return;
-        // }
-        //head
+        // head
         if (numb == pfnode->numb)
         {
             book->pfnode = book->pfnode->pnext;
@@ -668,11 +648,13 @@ int main()
     Addressbook *book = CreatAddBook();
     while (1)
     {
-        int op = -1;
+        char op = -1;
         AddBookGui();
         printf("请选择一个功能\n");
-        scanf("%d", &op);
-        switch (op)
+        scanf("%s", &op);
+        int value = op - '0';
+        value = value%10;
+        switch (value)
         {
         case 1:
             AddGui();
