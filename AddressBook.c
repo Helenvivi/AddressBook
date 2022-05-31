@@ -643,6 +643,7 @@ void ExportTypeAdd(Addressbook *book, int class)
     }
 }
 
+
 int main()
 {
     Addressbook *book = CreatAddBook();
