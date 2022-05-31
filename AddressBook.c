@@ -648,12 +648,21 @@ int main()
     Addressbook *book = CreatAddBook();
     while (1)
     {
-        char op = '0';
+        char *op = malloc(sizeof(char) * 24);
+        memset(op, 0, sizeof(char) * 24);
+        int value = 0;
         AddBookGui();
         printf("请选择一个功能\n");
-        scanf("%s", &op);
-        int value = op - '0';
-        value = value%10;
+        scanf("%s", op);
+        if (strlen(op) <= 24)
+        {
+            while (*op != '\0')
+            {
+                value = value + (*op - '0');
+                op++;
+            }
+        }
+        value = value % 10;
         switch (value)
         {
         case 1:
@@ -718,6 +727,8 @@ int main()
             AddGui();
             exit(0);
         default:
+            ClearAddBook(book->pfnode);
+            free(book);
             AddGui();
             AddBookGui();
             printf("功能选择错误,请重新输入\n");
